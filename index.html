@@ -9,9 +9,12 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <!-- styles to override bootstrap settings or add our own styles -->
+  <script type="text/javascript" src= QuadScript.js></script>
   <style>
     /* Set gray background color and 100% height */
+    body{
+      background-color: lightblue
+    }
     .sidenav {
       height: 100%;
     }
@@ -24,22 +27,34 @@
       .row.content {height:auto;} 
     }
     .coeff {
-      width: 100%;
-      background-color: lightgreen;
+      width: 90%;
+      background-color: lightgray;
       padding: 10px;
       border-radius: 15px;
     }
+    .formInfo{
+      background-color: darkgray;
+      border-radius: 15px;
+      padding: 5px;
+    }
+    .answers {
+      width: 100%;
+      background-color: darkgray;
+      padding: 5px;
+      border-radius: 10px;
+    }
     canvas {
+      width: 100%;
       display: block;
       border-style: solid;
       border-width: 5px;
-      background-color: lightblue;
-      margin-top: 5px;
+      background-color: white;
+      margin-top: 10px;
     }
   </style>
 
   </head>
-  <body>
+  <body onload="init()">
    <!--  Nav bar that is responsive (container-fluid with data-toggle at collapse) -->
    <nav class="navbar navbar-inverse">
     <div class="container-fluid">
@@ -53,8 +68,8 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Linear Grapher</a></li>
-          <li><a href="#2">Quadratic Grapher</a></li>
+          <li><a href="#">Linear Grapher</a></li>
+          <li class="active"><a href="#2">Quadratic Grapher</a></li>
           <li><a href="#3">Cubic Grapher</a></li>
         </ul>
       </div>
@@ -68,17 +83,25 @@
         <div class="coeff">
           <p class="formInfo">Type the values of the coefficients below<br>
 
-            a = <input size="5" type="text" id="linA" value="0"> <br>
+            a = <input size="5" type="text" id="quadA" value="0"> <br>
             b = <input size="5" type="text" id="linB" value="0"> <br>
             c = <input size="5" type="text" id="constant" value="0"> <br>
-            <button class="btn" onclick="">Submit Values</button>
+            <button class="btn" onclick="QF()">Submit Values</button>
+          <button class="btn" onclick="k()">+</button>
+          <button class="btn" onclick="l()">-</button>
           </p>
         </div>
-      </div>
-      <div class="col-sm-8 text-left"> 
-        <canvas class="canvasGrids" id="mycanvas"></canvas>
+        <div class="answers">
+      <p id="solution1">X-int</p>
+      <p id="solution2">X-int</p>
+      <p id= "vertex">vertex</p>
+      <p id= "y-int1">Y-int</p>
+      <p id= "y-int2">Y-int</p>
       </div>
     </div>
-  </div>
+   <div class="col-sm-8 text-left">
+   <canvas class="canvasGrids" id="myCanvas"></canvas>
+  </div> 
+</div>
   </body>
 </html>
