@@ -27,19 +27,26 @@
       .row.content {height:auto;} 
     }
     .coeff {
-      width: 90%;
-      background-color: lightgray;
-      padding: 10px;
-      border-radius: 15px;
+      width: 95%;
+      background-color: #e4b5ff;
+      padding: 20px;
+      border-radius: 20px;
+      margin-top: 10px;
     }
     .formInfo{
-      background-color: darkgray;
+      background-color: #e4b5ff;
       border-radius: 15px;
       padding: 5px;
     }
     .answers {
       width: 100%;
-      background-color: darkgray;
+      background-color: #e4b5ff;
+      padding: 5px;
+      border-radius: 10px;
+    }
+    .zoom{
+      width: 100px;
+      background-color: #e4b5ff
       padding: 5px;
       border-radius: 10px;
     }
@@ -79,28 +86,30 @@
   <!--    our main body of divs that are responsive (go from in-line to block when screen is small) -->
   <div class="container-fluid">    
     <div class="row content">
-      <div class="col-sm-2 sidenav">
+      <div class="col-sm-3 sidenav">
         <div class="coeff">
           <p class="formInfo">Type the values of the coefficients below<br>
 
-            a = <input size="5" type="text" id="quadA" value="0"> <br>
-            b = <input size="5" type="text" id="linB" value="0"> <br>
-            c = <input size="5" type="text" id="constant" value="0"> <br>
+            a = <input size="5" type="text" id="quadA" value="1"> <br>
+            b = <input size="5" type="text" id="linB" value="2"> <br>
+            c = <input size="5" type="text" id="constant" value="-2"> <br>
             <button class="btn" onclick="QF()">Submit Values</button>
-          <button class="btn" onclick="maximize()">+</button>
-          <button class="btn" onclick="minimize()">-</button>
           </p>
         </div>
-        <div class="answers">
+        <div class="coeff sidenav">
       <p id="solution1">X-int</p>
       <p id="solution2">X-int</p>
       <p id= "vertex">vertex</p>
       <p id= "y-int1">Y-int</p>
-      <p id= "y-int2">Y-int</p>
       <p id= "core">Corresponding Point</p>
       <p id= "aos">Symmetry Line</p>
       </div>
     </div>
+    <div class="zoom">
+<button class="btn" onclick="maximize()">+</button>
+<button class="btn" onclick="minimize()">-</button>
+<button class="btn" onclick="clear()">clear</button>
+        </div>
    <div class="col-sm-8 text-left">
    <canvas class="canvasGrids" id="myCanvas"></canvas>
   </div> 

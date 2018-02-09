@@ -1,5 +1,5 @@
 //Javascript for drawing and calculating quadratics 2017
-var a, b, c, context, w, h, k=12;
+var a, b, c, context, w, h, k=20;
 
 function init() {
   canvas= document.getElementById("myCanvas");
@@ -16,39 +16,57 @@ function QF() {
   a = $("#quadA").val();
   b = $("#linB").val();
   c = $("#constant").val();
-  x1 = (-b+Math.sqrt(b^2-4*a*c))/(2*a);
+  x1 = (-b+Math.sqrt(b**2-4*a*c))/(2*a);
   x1 = Math.round(x1*1000)/1000;
-  x2 = (-b-Math.sqrt(b^2-4*a*c))/(2*a);
+  x2 = (-b-Math.sqrt(b**2-4*a*c))/(2*a);
   x2 = Math.round(x2*1000)/1000;
   vX = -(b*1)/(2*a);
   vY = a*Math.pow(vX,2)+b*vX+c*1;
-  if (x1<0) {
-    x1 = x1*(-1)+"i";
-  }
-  if (x2<0) {
-    x2 = x2*(-1)+"i";
-  }
   xcp = 2*vX;
-
-  $("#solution1").text("X intercept is at "+x1);
-  $("#solution2").text("X intercept is at "+x2);
-  $("#y-int1").text("Y intercept is at (0,"+ c+ ")");
-  $("#y-int2").text("Y intercept is at ("+(vX*2)+","+ c+ ")");
   console.log(a,b,c); 
-  results();
+  vX = vX.toFixed(2);
+  vY = vY.toFixed(2);
+
   graphQuad();
+  results();
 }  // close QF
 
 function results() {
 
   // finding vertex and displaying symline and yint results
-
+  $("#solution1").text("X intercept is at "+x1);
+  context.fillStyle = "darkblue"
+  context.beginPath();
+  context.arc(w/2+x1*k, h/2, 4, 0,6.28);
+  context.fill();
+  $("#solution2").text("X intercept is at "+x2);
+  context.fillStyle = "darkblue"
+  context.beginPath();
+  context.arc(w/2+x2*k, h/2, 4, 0,6.28);
+  context.fill();
   $("#vertex").text("Vertex is at (" + vX+","+vY+")");
+  context.fillStyle = "darkblue"
+  context.beginPath();
+  context.arc(w/2+vX*k, h/2-vY*k, 4, 0, 6.28);
+  context.fill();
   $("#core").text("Corresponding Point  is at (" +xcp+","+c+")");
   context.beginPath();
-  context.arc(200, c, 5, 0, 2 * Math.PI);
-  context.stroke();
+  context.arc(w/2+xcp*k, h/2-c*k, 4, 0, 6.28);
+  context.fill();
+  $("#y-int1").text("Y intercept is at (0,"+ c+ ")");
+  context.beginPath();
+  context.arc(w/2, h/2-c*k, 4, 0, 6.28);
+  context.fill();
   $("#aos").text("Symmetry Line is at " +vX);
+
+  context.lineWidth= 2;
+  context.strokeStyle= "rgba(50,0,200,.5)";
+  context.setLineDash([10,8]);
+  context.beginPath();
+  context.moveTo(w/2+vX*k,5);
+  context.lineTo(w/2+vX*k, h+5)
+  context.stroke();
+  context.setLineDash([0]);
 }  // close results()
 
 function graphpaper() {
@@ -61,7 +79,6 @@ function graphpaper() {
   context.moveTo(0, h/2);
   context.lineTo(w, h/2);
   context.stroke();
-
 
 // thin line with a 50% opacity using rgba() 
 context.lineWidth=1;
@@ -112,10 +129,15 @@ function graphQuad () {
 }
 
 function maximize(){ 
-  k = k+3;
+  k = k+2;
   init();
+  QF();
 }
 function minimize(){
-  k = k-3; 
+  k = k-2; 
   init();
+  QF();
+}
+function clear(){
+  context.clear();
 }
