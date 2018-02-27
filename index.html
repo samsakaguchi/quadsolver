@@ -13,7 +13,7 @@
   <style>
     /* Set gray background color and 100% height */
     body{
-      background-color: lightblue
+      background-color: #e4b5ff
     }
     .sidenav {
       height: 100%;
@@ -28,25 +28,26 @@
     }
     .coeff {
       width: 95%;
-      background-color: #e4b5ff;
+      background-color: #f9ffc9;
       padding: 20px;
       border-radius: 20px;
       margin-top: 10px;
+      text-align: center;
     }
     .formInfo{
-      background-color: #e4b5ff;
+      background-color: #f9ffc9;
       border-radius: 15px;
       padding: 5px;
     }
     .answers {
       width: 100%;
-      background-color: #e4b5ff;
+      background-color: #f9ffc9;
       padding: 5px;
       border-radius: 10px;
     }
     .zoom{
       width: 100px;
-      background-color: #e4b5ff
+      background-color: #f9ffc9;
       padding: 5px;
       border-radius: 10px;
     }
@@ -103,13 +104,15 @@
       <p id= "y-int1">Y-int</p>
       <p id= "core">Corresponding Point</p>
       <p id= "aos">Symmetry Line</p>
+      <p id= "point">Point on Curve</p>
       </div>
-    </div>
-    <div class="zoom">
-<button class="btn" onclick="maximize()">+</button>
-<button class="btn" onclick="minimize()">-</button>
-<button class="btn" onclick="clear()">clear</button>
+        <div class="coeff sidenav">
+<span class="glyphicon glyphicon-zoom-in btn "onclick="maximize()"></span>
+<span class="glyphicon glyphicon-zoom-out btn" onclick="minimize()"></span>
+<button class="init" onclick="Clear()">CLEAR GRID</button>
         </div>
+    </div>
+
    <div class="col-sm-8 text-left">
    <canvas class="canvasGrids" id="myCanvas"></canvas>
   </div> 
